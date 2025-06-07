@@ -1,0 +1,79 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="default" namespace="/" extends="struts-default">
+        
+        <!-- Definición de interceptores -->
+        <interceptors>
+            <interceptor name="sessionCheck" class="controller.SessionInterceptor"/>
+            <interceptor-stack name="appStack">
+                <interceptor-ref name="sessionCheck"/>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+        </interceptors>
+
+        <!-- Acción de login: SIN protección -->
+        <action name="login" class="controller.LoginAction">
+            <result name="success" type="redirectAction">PacienteList</result>
+            <result name="input">/it/login.jsp</result>
+            <result name="error">/it/error.jsp</result>
+        </action>
+
+        <!-- Acciones protegidas (todas llevan el interceptor) -->
+        <action name="PacienteList" class="controller.PacienteListAction">
+            <interceptor-ref name="appStack"/>
+            <result>/it/pacientes.jsp</result>
+            <result name="error">/error.jsp</result>
+            <result name="loginRedirect" type="redirectAction">login</result>
+
+        </action>
+
+        <action name="PacienteNew" class="controller.PacienteNewAction">
+            <result>/it/nuevoPaciente.jsp</result>
+            <result name="error">/error.jsp</result>
+            <result name="loginRedirect" type="redirectAction">login</result>
+
+        </action>
+        
+        <action name="PacienteSave" class="controller.PacienteSaveAction">
+            <result type="redirectAction">PacienteList</result>
+            <result name="input">/it/nuevoPaciente.jsp</result>
+            <result name="error">/error.jsp</result>
+            <result name="loginRedirect" type="redirectAction">login</result>
+
+        </action>
+        
+        <action name="PacienteEdit" class="controller.PacienteEditAction">
+            <interceptor-ref name="appStack"/>
+            <result>/it/editarPaciente.jsp</result>
+            <result name="error">/error.jsp</result>
+            <result name="loginRedirect" type="redirectAction">login</result>
+
+        </action>
+
+        <action name="PacienteUpdate" class="controller.PacienteUpdateAction">
+            <interceptor-ref name="appStack"/>
+            <result type="redirectAction">PacienteList</result>
+            <result name="input">/it/editarPaciente.jsp</result>
+            <result name="error">/error.jsp</result>
+            <result name="loginRedirect" type="redirectAction">login</result>
+
+        </action>
+
+        <action name="PacienteDelete" class="controller.PacienteDeleteAction">
+            <interceptor-ref name="appStack"/>
+            <result type="redirectAction">PacienteList</result>
+            <result name="error">/error.jsp</result>
+            <result name="loginRedirect" type="redirectAction">login</result>
+
+        </action>
+
+        <!-- Acción de logout: SIN protección -->
+        <action name="logout" class="controller.LogoutAction">
+            <result type="redirectAction">login</result>
+        </action>
+
+    </package>
+</struts>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="modelo.Medico" table="medico">
+        <id name="id" type="long">
+            <column name="id"/>
+            <generator class="identity"/>
+        </id>
+        <property name="nombre" type="string">
+            <column name="nombre" length="100" not-null="true"/>
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="100" not-null="true"/>
+        </property>
+        <property name="password" type="string">
+            <column name="password" length="255" not-null="true"/>
+        </property>
+        <property name="especialidad" type="string">
+            <column name="especialidad" length="100"/>
+        </property>
+        <property name="ncita" type="int">
+            <column name="ncita" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>
