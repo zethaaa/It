@@ -35,7 +35,9 @@ public class CitaDao {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
         Cita cita = (Cita) session.get(Cita.class, id);
-        if (cita != null) session.delete(cita);
+        if (cita != null) {
+            session.delete(cita);
+        }
         tx.commit();
         session.close();
     }

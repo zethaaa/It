@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+  "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="modelo.Cita" table="citas">
+        <id name="id" type="long">
+            <column name="id"/>
+            <generator class="identity"/>
+        </id>
+        <property name="idPaciente" type="int">
+            <column name="id_paciente" not-null="true"/>
+        </property>
+        <property name="idMedico" type="int">
+            <column name="id_medico" not-null="true"/>
+        </property>
+        <property name="fechaCita" type="timestamp">
+            <column name="fecha_cita" not-null="true"/>
+        </property>
+        <property name="motivo" type="string">
+            <column name="motivo" length="255" not-null="true"/>
+        </property>
+        <property name="estado" type="string">
+            <column name="estado" length="20" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>

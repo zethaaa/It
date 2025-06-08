@@ -1,5 +1,6 @@
 package dao;
 
+import java.util.List;
 import modelo.Medico;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -18,5 +19,12 @@ public class MedicoDao {
         } finally {
             session.close();
         }
+    }
+
+    public List<Medico> consultaMedicos() {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        List<Medico> lista = session.createQuery("FROM Medico").list();
+        session.close();
+        return lista;
     }
 }

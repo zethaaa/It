@@ -6,7 +6,7 @@ package modelo;
  * and open the template in the editor.
  */
 
-import org.hibernate.cfg.AnnotationConfiguration;
+import org.hibernate.cfg.*;
 import org.hibernate.SessionFactory;
 
 /**

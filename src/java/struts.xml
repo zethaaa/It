@@ -5,7 +5,6 @@
 <struts>
     <package name="default" namespace="/" extends="struts-default">
         
-        <!-- Definición de interceptores -->
         <interceptors>
             <interceptor name="sessionCheck" class="controller.SessionInterceptor"/>
             <interceptor-stack name="appStack">
@@ -82,12 +81,96 @@
         
         <action name="CitaList" class="controller.CitaListAction">
             <interceptor-ref name="appStack"/>
-            <result>/it/citas.jsp</result>
+            <result>/it/cita.jsp</result>
+            <result name="error">/error.jsp</result>
+            <result name="loginRedirect" type="redirectAction">login</result>
+        </action>
+        
+        
+        <action name="CitaNew" class="controller.CitaNewAction">
+            <interceptor-ref name="appStack"/>
+            <result>/it/nuevoCita.jsp</result>
+            <result name="error">/error.jsp</result>
+            <result name="loginRedirect" type="redirectAction">login</result>
+        </action>
+        
+        <action name="CitaSave" class="controller.CitaSaveAction">
+            <interceptor-ref name="appStack"/>
+
+            <result type="redirectAction">CitaList</result>
+            <result name="input">/it/nuevoCita.jsp</result>
+            <result name="error">/error.jsp</result>
+            <result name="loginRedirect" type="redirectAction">login</result>
+
+        </action>
+        
+        <action name="CitaEdit" class="controller.CitaEditAction">
+            <interceptor-ref name="appStack"/>
+            <result>/it/editarCita.jsp</result>
+            <result name="error">/error.jsp</result>
+            <result name="loginRedirect" type="redirectAction">login</result>
+
+        </action>
+        <action name="CitaUpdate" class="controller.CitaUpdateAction">
+            <interceptor-ref name="appStack"/>
+            <result type="redirectAction">CitaList</result>
+            <result name="input">/it/editarCita.jsp</result>
+            <result name="error">/error.jsp</result>
+            <result name="loginRedirect" type="redirectAction">login</result>
+
+        </action>
+        
+        <action name="CitaDelete" class="controller.CitaDeleteAction">
+            <interceptor-ref name="appStack"/>
+            <result type="redirectAction">CitaList</result>
+            <result name="error">/error.jsp</result>
+            <result name="loginRedirect" type="redirectAction">login</result>
+
+        </action>
+        
+        <action name="HistorialList" class="controller.HistorialListAction">
+            <interceptor-ref name="appStack"/>
+            <result>/it/historial.jsp</result>
             <result name="error">/error.jsp</result>
             <result name="loginRedirect" type="redirectAction">login</result>
         </action>
 
-        <!-- Acción de logout: SIN protección -->
+        <action name="HistorialNew" class="controller.HistorialNewAction">
+            <result>/it/nuevoHistorial.jsp</result>
+            <result name="error">/error.jsp</result>
+            <interceptor-ref name="appStack"/>
+        </action>
+
+        <action name="HistorialSave" class="controller.HistorialSaveAction">
+            <result type="redirectAction">HistorialList</result>
+            <result name="input">/it/nuevoHistorial.jsp</result>
+            <result name="error">/error.jsp</result>
+            <interceptor-ref name="appStack"/>
+        </action>
+
+
+        <action name="HistorialEdit" class="controller.HistorialEditAction">
+            <interceptor-ref name="appStack"/>
+            <result>/it/editarHistorial.jsp</result>
+            <result name="error">/error.jsp</result>
+            <result name="loginRedirect" type="redirectAction">login</result>
+        </action>
+
+        <action name="HistorialUpdate" class="controller.HistorialUpdateAction">
+            <interceptor-ref name="appStack"/>
+            <result type="redirectAction">HistorialList</result>
+            <result name="input">/it/editarHistorial.jsp</result>
+            <result name="error">/error.jsp</result>
+            <result name="loginRedirect" type="redirectAction">login</result>
+        </action>
+
+        <action name="HistorialDelete" class="controller.HistorialDeleteAction">
+            <interceptor-ref name="appStack"/>
+            <result type="redirectAction">HistorialList</result>
+            <result name="error">/error.jsp</result>
+            <result name="loginRedirect" type="redirectAction">login</result>
+        </action>
+
         <action name="logout" class="controller.LogoutAction">
             <result type="redirectAction">login</result>
         </action>

@@ -11,7 +11,9 @@
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.format_sql">true</property>
     <property name="hibernate.hbm2ddl.auto">update</property>
-    <mapping resource="modelo/pacientes.hbm.xml"/>
+    <mapping resource="modelo/cita.hbm.xml"/>
     <mapping resource="modelo/medico.hbm.xml"/>
+    <mapping resource="modelo/pacientes.hbm.xml"/>
+    <mapping resource="modelo/historial.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

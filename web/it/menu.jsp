@@ -8,9 +8,9 @@
     <body>
         <h2>Menú Principal</h2>
         <ul>
-            <li><a href="PacienteList.action">Gestión de Pacientes</a></li>
-            <li><a href="CitaList.action">Gestión de Citas</a></li>
-            <li><a href="HistorialList.action">Historial Médico</a></li>
+            <li><a href="PacienteList">Gestión de Pacientes</a></li>
+            <li><a href="CitaList">Gestión de Citas</a></li>
+            <li><a href="HistorialList">Historial Médico</a></li>
         </ul>
     </body>
 </html>

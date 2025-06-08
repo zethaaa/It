@@ -45,5 +45,4 @@ Contributor(s):
   <table-filter match-name="pacientes"/>
   <table-filter match-name="citas"/>
   <table-filter match-name="medico"/>
-  <table-filter match-name="perfil"/>
 </hibernate-reverse-engineering>
