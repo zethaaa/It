@@ -46,5 +46,10 @@
 
         <a href="logout">Cerrar sesión</a>
 
+        <br>
+
+        <a href="menu">Volver</a>
+
+
     </body>
 </html>

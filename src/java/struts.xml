@@ -16,12 +16,18 @@
 
         <!-- Acción de login: SIN protección -->
         <action name="login" class="controller.LoginAction">
-            <result name="success" type="redirectAction">PacienteList</result>
+            <result name="success" type="redirectAction">menu</result>
             <result name="input">/it/login.jsp</result>
             <result name="error">/it/error.jsp</result>
         </action>
 
-        <!-- Acciones protegidas (todas llevan el interceptor) -->
+        <action name="menu" class="controller.MenuAction">
+            <interceptor-ref name="appStack"/>
+            <result>/it/menu.jsp</result>
+            <result name="error">/error.jsp</result>
+            <result name="loginRedirect" type="redirectAction">login</result>
+        </action>
+
         <action name="PacienteList" class="controller.PacienteListAction">
             <interceptor-ref name="appStack"/>
             <result>/it/pacientes.jsp</result>
@@ -31,6 +37,8 @@
         </action>
 
         <action name="PacienteNew" class="controller.PacienteNewAction">
+            <interceptor-ref name="appStack"/>
+
             <result>/it/nuevoPaciente.jsp</result>
             <result name="error">/error.jsp</result>
             <result name="loginRedirect" type="redirectAction">login</result>
@@ -38,6 +46,8 @@
         </action>
         
         <action name="PacienteSave" class="controller.PacienteSaveAction">
+            <interceptor-ref name="appStack"/>
+
             <result type="redirectAction">PacienteList</result>
             <result name="input">/it/nuevoPaciente.jsp</result>
             <result name="error">/error.jsp</result>
@@ -68,6 +78,13 @@
             <result name="error">/error.jsp</result>
             <result name="loginRedirect" type="redirectAction">login</result>
 
+        </action>
+        
+        <action name="CitaList" class="controller.CitaListAction">
+            <interceptor-ref name="appStack"/>
+            <result>/it/citas.jsp</result>
+            <result name="error">/error.jsp</result>
+            <result name="loginRedirect" type="redirectAction">login</result>
         </action>
 
         <!-- Acción de logout: SIN protección -->
