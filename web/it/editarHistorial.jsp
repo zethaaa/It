@@ -8,7 +8,7 @@
     <body>
         <h2>Editar Historial Médico</h2>
         <s:form action="HistorialUpdate">
-            <s:hidden name="id"/>
+            <s:hidden name="historial.id"/>
             <table>
                 <tr>
                     <td>Cita (Motivo):</td>
@@ -19,13 +19,13 @@
                 <tr>
                     <td>Diagnóstico:</td>
                     <td>
-                        <s:textarea name="diagnostico" required="true" rows="4" cols="40"/>
+                        <s:textarea name="historial.diagnostico" required="true" rows="4" cols="40"/>
                     </td>
                 </tr>
                 <tr>
                     <td>Tratamiento:</td>
                     <td>
-                        <s:textarea name="tratamiento" required="true" rows="4" cols="40"/>
+                        <s:textarea name="historial.tratamiento" required="true" rows="4" cols="40"/>
                     </td>
                 </tr>
             </table>

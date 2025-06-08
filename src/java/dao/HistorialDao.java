@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.util.List;
+import org.hibernate.Query;
 
 public class HistorialDao {
 
@@ -27,10 +28,13 @@ public class HistorialDao {
 
     public Historial obtenerPorCitaId(Long citaId) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        Historial historial = (Historial) session.createQuery("FROM Historial WHERE cita.id = :citaId")
-                .setParameter("citaId", citaId).uniqueResult();
-        session.close();
-        return historial;
+        try {
+            Query query = session.createQuery("FROM modelo.Historial WHERE idCita = :citaId");
+            query.setParameter("citaId", citaId);
+            return (Historial) query.uniqueResult();
+        } finally {
+            session.close();
+        }
     }
 
     public List<Historial> obtenerPorPacienteId(Long pacienteId) {
@@ -58,6 +62,15 @@ public class HistorialDao {
         }
         tx.commit();
         session.close();
+    }
+
+    public Historial obtenerPorId(Long id) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        try {
+            return (Historial) session.get(Historial.class, id); // Busca por id primario
+        } finally {
+            session.close();
+        }
     }
 
 }

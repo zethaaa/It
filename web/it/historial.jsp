@@ -3,11 +3,16 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Historiales Médicos</title>
+        <title>Listado de Historiales Médicos</title>
+        <style>
+            table { border-collapse: collapse; }
+            th, td { border: 1px solid #222; padding: 5px 10px; }
+            th { background: #eee; }
+        </style>
     </head>
     <body>
         <h2>Listado de Historiales Médicos</h2>
-        <table border="1">
+        <table>
             <tr>
                 <th>ID</th>
                 <th>Paciente</th>
@@ -16,21 +21,22 @@
                 <th>Tratamiento</th>
                 <th>Acciones</th>
             </tr>
-            <s:iterator value="listaHistoriales" var="historial">
+            <s:iterator value="listaHistorialesVista" var="h">
                 <tr>
-                    <td><s:property value="#historial.id"/></td>
-                    <td><s:property value="#historial.cita.idPaciente"/></td>
-                    <td><s:property value="#historial.cita.motivo"/></td>
-                    <td><s:property value="#historial.diagnostico"/></td>
-                    <td><s:property value="#historial.tratamiento"/></td>
+                    <td><s:property value="#h.id"/></td>
+                    <td><s:property value="#h.nombrePaciente"/></td>
+                    <td><s:property value="#h.motivoCita"/></td>
+                    <td><s:property value="#h.diagnostico"/></td>
+                    <td><s:property value="#h.tratamiento"/></td>
                     <td>
-                        <a href="HistorialEdit?id=<s:property value='#historial.id'/>">Editar</a>
+                        <a href="HistorialEdit?id=<s:property value='#h.id'/>">Editar</a>
+                        <a href="HistorialDelete?id=<s:property value='#h.id'/>">Eliminar</a>
+
                     </td>
                 </tr>
             </s:iterator>
         </table>
         <br>
-        <a href="HistorialNew">Añadir Nuevo Historial</a>
         <a href="menu">Volver al menú</a>
     </body>
 </html>

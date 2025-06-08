@@ -6,21 +6,25 @@ import modelo.Historial;
 
 public class HistorialEditAction extends ActionSupport {
 
-    private Long citaId;
+    private Long id; // este es el id del historial, lo recibes por parámetro
     private Historial historial;
 
     public String execute() {
-        historial = new HistorialDao().obtenerPorCitaId(citaId);
-        return (historial != null) ? SUCCESS : ERROR;
+        historial = new HistorialDao().obtenerPorId(id);
+        if (historial == null) {
+            addActionError("No existe el historial.");
+            return ERROR;
+        }
+        return SUCCESS;
     }
 
-    // getter y setter
-    public Long getCitaId() {
-        return citaId;
+    // getters y setters para 'id' y 'historial'
+    public Long getId() {
+        return id;
     }
 
-    public void setCitaId(Long citaId) {
-        this.citaId = citaId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Historial getHistorial() {
