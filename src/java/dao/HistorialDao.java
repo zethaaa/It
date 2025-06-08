@@ -55,13 +55,22 @@ public class HistorialDao {
 
     public void eliminarHistorial(Long id) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        Transaction tx = session.beginTransaction();
-        Historial historial = (Historial) session.get(Historial.class, id);
-        if (historial != null) {
-            session.delete(historial);
+        Transaction tx = null;
+        try {
+            tx = session.beginTransaction();
+            Historial historial = (Historial) session.get(Historial.class, id);
+            if (historial != null) {
+                session.delete(historial);
+            }
+            tx.commit();
+        } catch (Exception e) {
+            if (tx != null) {
+                tx.rollback();
+            }
+            throw e;
+        } finally {
+            session.close();
         }
-        tx.commit();
-        session.close();
     }
 
     public Historial obtenerPorId(Long id) {

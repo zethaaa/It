@@ -30,7 +30,8 @@
                     <td><s:property value="#h.tratamiento"/></td>
                     <td>
                         <a href="HistorialEdit?id=<s:property value='#h.id'/>">Editar</a>
-                        <a href="HistorialDelete?id=<s:property value='#h.id'/>">Eliminar</a>
+                        <a href="HistorialDelete?id=<s:property value='#h.id'/>"
+                           onclick="return confirm('¿Seguro que quieres borrar este historial?');">Borrar</a>
 
                     </td>
                 </tr>
